@@ -1,4 +1,4 @@
-#Git Notes
+# Git Notes
 
 ## Overview
 Here my notes to understanding git basics like workspace, stage, commits, branches and how to work with the basic git commands.
@@ -35,7 +35,7 @@ There are two common ways of starting work in a repository: We can either use th
 
 The local repository is tied to the source by a configuration called the remote.
 
-## The commit
+## The Commit
 The base unit of Git is the commit. Intuitively, a Git commit represents the full state of the workspace at a given point in time. A commit also contains the following metadata:
 What commit(s) came before it
 The author and committer
