@@ -140,5 +140,5 @@ You would need to create a branch in order to commit/push changes because you wo
 
 ## Merging branches
 Conceptually, when we want to merge two branches, we create a new commit containing the joint changeset from the two branches. This works by finding the point at which the branches diverged and joining the two changesets.
-
-![alt text](https://github.com/justmobiledev/git-notes-1/blob/main/images/merge-branches-1.jpg?raw=true)
+ 
+ <img src="(https://github.com/justmobiledev/git-notes-1/blob/main/images/merge-branches-1.jpge" width="400">
