@@ -49,6 +49,8 @@ The tag is the simplest reference in Git. It is simply a pointer to a commit. A 
 A tag is never changing. That means that we at any time can back to a commit through a name. 
  
 ## The Branch
+A branch is a file containing the sha of the commit it points to. 
+Local branches are located under .git/refs/heads.
 As we do development and create commits, the currently active branch moves along and points to the new commits that we create. The currently active branch is also said to be the branch that we have checked out.
  
 Git uses a branch named master as its default. This means that we expect the master branch to be the main source of truth and the most important branch.
@@ -61,6 +63,14 @@ Example:
 ```
 git clone https://github.com/eficode-academy/git-katas.git git-katas. 
 ```
+To create a local branch:
+```
+git branch <branch-name> <commit>. 
+ ```
+ As an example: 
+ ```git branch my-branch master. 
+ ```
+ This will create a branch in the repository. It will be called my-branch and point to the same commit as master. 
 
 ## The .git directory
 Contains:
@@ -127,3 +137,7 @@ If you are working in your repo and do git checkout <SHA> you will be in a "deta
 A detached head can also occur when you are rebasing. You are checked out to a specific commit.
  
 You would need to create a branch in order to commit/push changes because you would be creating commits that would be "in limbo" with no way to identify them other than the SHA. Git will remove the commit during its garbage collection because of it not being on a branch.
+
+## Merging branches
+Conceptually, when we want to merge two branches, we create a new commit containing the joint changeset from the two branches. This works by finding the point at which the branches diverged and joining the two changesets.
+
