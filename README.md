@@ -142,3 +142,21 @@ You would need to create a branch in order to commit/push changes because you wo
 Conceptually, when we want to merge two branches, we create a new commit containing the joint changeset from the two branches. This works by finding the point at which the branches diverged and joining the two changesets.
  
 <img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/merge-branches-1.jpg" width="400">
+ 
+## Merging
+ 
+The common way to use the merge command is with the form `git merge branch` which will merge the changeset from branch into the branch currently checked out, for example:
+```
+git merge feature-123.
+```
+ 
+### Fast-forward Merges
+ A fast-forward merge happens when there has been no divergence between the branches you are merging. This occurs when a branch is a continuation of another. In this scenario, one branch is linearly ahead of another. To merge the change, all we need to do is to move the second branch pointer to the commit the ahead branch points to.
+ 
+ This also means that there is no possibility for any conflict doing a fast-forward merge. For this reason, fast-forward merges can be considered safe.
+ 
+<img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/fast-forward-merge-1.jpg" width="400">
+ 
+ 
+ 
+ 
