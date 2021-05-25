@@ -6,6 +6,7 @@ Here my notes to understanding git basics like workspace, stage, commits, branch
 ## Command Cheat Sheet
 ```
 git --version
+git init <directory> (create local repo)
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 git clone
@@ -13,6 +14,7 @@ git status
 git log
 git log --oneline
 git log --oneline -n2  (lines)
+git log --all --graph --oneline (branch graph)
 git add <file name> (this adds the new and modified files to staging for the next commit).
 git restore --staged file1.txt  (this unstages file1 and excludes it from the commit)
 git checkout -b "branch name" (create branch)
@@ -26,6 +28,8 @@ git checkout <target> (change branch)
 git checkout -- <file name> (undo changes to specific file)
 git diff <branch 1> <branch 2> (diff between two branches)
 git diff <commit sha 1> <commit sha 2> (diff between two commits)
+git merge <branch name> (merges the branch specified into the current branch)
+git merge --abort (aborts the merge)
 ```
 
 ## The Repository
@@ -157,6 +161,17 @@ git merge feature-123.
  
 <img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/fast-forward-merge-1.jpg" width="600">
  
+## Three-way Merge
+Three-way merges are named as such because three points are involved in the merge – both end states as well as the point from which both branches depart. We name these the source, target, and merge base, respectively. 
+ 
+  <img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/three-way-merge-2.jpg" width="600">
+ 
+These occur when both of the branches that we are merging contain work that is only on one branch. Commonly, what happens is that while we were developing on our feature branch, some other developer has delivered some changes to the master branch. As such, the point at which we branched out from the master branch is no longer the newest commit on the master branch. As commits represent a specific state of the workspace, we need to create a new commit that contains the state of the workspace after grabbing both changesets.
+ 
+ <img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/three-way-merge-1.jpg" width="600">
+
+## Merge Conflicts
+It can be the case that Git is unable to determine what the result should be from merging branches. In this case, Git will ask for the user to resolve the merge and resume the process. This situation is called a merge conflict.
  
  
  
