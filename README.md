@@ -15,12 +15,12 @@ git log --oneline
 git log --oneline -n2  (lines)
 git add <file name> (this adds the new and modified files to staging for the next commit).
 git restore --staged file1.txt  (this unstages file1 and excludes it from the commit)
-git checkout -b “branch name” (create branch)
+git checkout -b "branch name" (create branch)
 git branch (all local)
 git branch -r (all remote)
 git branch -a (all local and remote)
 git commit -m "our first commit"
-Git -a -m “asdfasd”  (adds all modified files to the commit)
+Git -a -m "asdfasd"  (adds all modified files to the commit)
 git commit --amend -m "new commit message"  (change message)
 git checkout <target> (change branch)
 git checkout -- <file name> (undo changes to specific file)
@@ -141,7 +141,7 @@ You would need to create a branch in order to commit/push changes because you wo
 ## Merging branches
 Conceptually, when we want to merge two branches, we create a new commit containing the joint changeset from the two branches. This works by finding the point at which the branches diverged and joining the two changesets.
  
-<img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/merge-branches-1.jpg" width="400">
+<img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/merge-branches-1.jpg" width="600">
  
 ## Merging
  
@@ -155,7 +155,7 @@ git merge feature-123.
  
  This also means that there is no possibility for any conflict doing a fast-forward merge. For this reason, fast-forward merges can be considered safe.
  
-<img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/fast-forward-merge-1.jpg" width="400">
+<img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/fast-forward-merge-1.jpg" width="600">
  
  
  
