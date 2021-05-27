@@ -14,7 +14,7 @@ git status
 git log
 git log --oneline
 git log --oneline -n2  (lines)
-git log --all --graph --oneline (branch graph)
+git log --oneline --graph --all (branch graph)
 git add <file name> (this adds the new and modified files to staging for the next commit).
 git restore --staged file1.txt  (this unstages file1 and excludes it from the commit)
 git checkout -b "branch name" (create branch)
@@ -30,6 +30,9 @@ git diff <branch 1> <branch 2> (diff between two branches)
 git diff <commit sha 1> <commit sha 2> (diff between two commits)
 git merge <branch name> (merges the branch specified into the current branch)
 git merge --abort (aborts the merge)
+git tag (list tags)
+git tag <tag note> <commit sha or branch name> (lightweight tag)
+git tag <tag note> <commit sha or branch name> -m "message" (annotated tag)
 ```
 
 ## The Repository
@@ -136,11 +139,11 @@ git diff <commit sha 1> <commit sha 2> (diff between two commits)
 
 ## What is a ‘Detached Head’?
 
-If you are working in your repo and do git checkout <SHA> you will be in a "detached HEAD". You are not on a branch (the commit is likely to be on multiple branches). You are checked out to a specific instance in the history.
+Detached head is a completely normal situation and it is easily remedied. A detached head simply means that HEAD is pointing to a commit rather than a branch. The consequence of this is that commits created while in a detached head situation do not have any references pointing to them. 
  
-A detached head can also occur when you are rebasing. You are checked out to a specific commit.
+ This can make them disappear from git log, become garbage collected, or simply be unnecessarily difficult to get back to. The two most common ways to end up in detached HEAD are by explicitly checking out a commit or by checking out a tag.
  
-You would need to create a branch in order to commit/push changes because you would be creating commits that would be "in limbo" with no way to identify them other than the SHA. Git will remove the commit during its garbage collection because of it not being on a branch.
+ 
 
 ## Merging branches
 Conceptually, when we want to merge two branches, we create a new commit containing the joint changeset from the two branches. This works by finding the point at which the branches diverged and joining the two changesets.
@@ -172,6 +175,25 @@ These occur when both of the branches that we are merging contain work that is o
 
 ## Merge Conflicts
 It can be the case that Git is unable to determine what the result should be from merging branches. In this case, Git will ask for the user to resolve the merge and resume the process. This situation is called a merge conflict.
+ 
+ ## Rebase
+An alternative to the three-way merge is the rebase. In contrast to the three-way merge that creates a new commit representing the workspace resulting from merging two branches, the rebase intuitively moves the commits. This is technically wrong, but we’ll keep the intuition for now. When we rebase our branch on top of another branch, intuitively we move the commits on our branch and apply them on top of the target branch.
+ 
+ We use the git rebase <target> command to rebase HEAD on top of <target>. Assuming feature is checked out, we would write git rebase master to rebase the feature branch on top of master. 
+  <img src="https://github.com/justmobiledev/git-notes-1/blob/main/images/merge-rebase-1.png" width="600">
+
+## Merge or Rebase?
+ It is key that the entire team works in a way that results in a consistent history no matter who delivers a given changeset. This most likely means everyone rebases or everyone merges. As rebasing changes the commit shas, it is considered bad practice to rebase branches that are public and that you work on as a team.
+ 
+ Second, if you are not working on a shared branch, you should always rebase. This leaves your history clean and bundles your commits nicely together for a concise delivery. 
+ 
+ ## Tags
+ There are two types of tags, lightweight and annotated. 
+ 
+ Lightweight tags are like branches except they are static. This means that they are simply a reference to a commit with no additional information. 
+ 
+ Annotated tags are full objects in the Git object database, takes a message, and provides additional information. Annotated commits are created by adding -a, -s, or -m to the tag command. The tag command looks like this: git tag <target> for lightweight tags. For example, git tag v1.6.2 a233b will create a lightweight tag pointing at the commit with the prefix a233b.
+ 
  
  
  
